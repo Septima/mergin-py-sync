@@ -10,7 +10,8 @@ client = mergin.MerginClient(url=url, login=login, password=password)
 projects = client.projects_list()
 for project in projects:
     project_path = os.path.join(project['namespace'], project['name'])
-    if os.path.exists(project_path):
-        client.pull_project(project_path)
+    dest_path = os.path.join(data, project_path)
+    if os.path.exists(dest_path):
+        client.pull_project(dest_path)
     else:
-        client.download_project(project_path=project_path, directory=os.path.join(data, project_path))
+        client.download_project(project_path=project_path, directory=dest_path)
