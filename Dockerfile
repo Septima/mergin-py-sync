@@ -1,4 +1,4 @@
-FROM python:alpine3.17
+FROM python
 
 RUN pip3 install mergin-client
 
